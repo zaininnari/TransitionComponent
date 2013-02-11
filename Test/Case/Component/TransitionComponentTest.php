@@ -251,12 +251,12 @@ class TransitionComponentTest extends CakeTestCase {
 
 		// case
 		$c->request->data = array(
-			'Transition' => array('nextStep' => 'nextStep'),
+			'Transition' => array('next' => 'nextStep'),
 		);
 		$t->step = null;
 		$t->stepValue = null;
 		$t->setStep();
-		$this->assertIdentical($t->step, TransitionComponent::NEXTSTEP);
+		$this->assertIdentical($t->step, TransitionComponent::NEXT);
 		$this->assertIdentical($t->stepValue, 'nextStep');
 		$this->assertIdentical($c->request->data, array());
 
@@ -273,23 +273,23 @@ class TransitionComponentTest extends CakeTestCase {
 
 		// case
 		$c->request->data = array(
-			'Transition' => array('nextStep' => 'invalid_value'),
+			'Transition' => array('next' => 'invalid_value'),
 		);
 		$t->step = null;
 		$t->stepValue = null;
 		$t->setStep();
-		$this->assertIdentical($t->step, TransitionComponent::NEXTSTEP);
+		$this->assertIdentical($t->step, TransitionComponent::NEXT);
 		$this->assertIdentical($t->stepValue, 'invalid_value');
 		$this->assertIdentical($c->request->data, array());
 
 		// case
 		$c->request->data = array(
-			'Transition' => array('nextStep' => ''),
+			'Transition' => array('next' => ''),
 		);
 		$t->step = null;
 		$t->stepValue = null;
 		$t->setStep();
-		$this->assertIdentical($t->step, TransitionComponent::NEXTSTEP);
+		$this->assertIdentical($t->step, TransitionComponent::NEXT);
 		$this->assertIdentical($t->stepValue, '');
 		$this->assertIdentical($c->request->data, array());
 	}

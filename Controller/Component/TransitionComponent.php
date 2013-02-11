@@ -20,7 +20,7 @@ App::uses('CakeSession', 'Model/Datasource');
 class TransitionComponent extends Component {
 
 	const PREF = 'prev';
-	const NEXTSTEP = 'nextStep';
+	const NEXT = 'next';
 
 /**
  * current step.
@@ -169,14 +169,14 @@ class TransitionComponent extends Component {
 		// response
 		$controller = $this->Controller;
 		if (Hash::check($controller->request->data, $this->sessionBaseKey)) {
-			if (Hash::check($controller->request->data, $this->sessionBaseKey . '.' . self::PREF)) {
-				$this->step = self::PREF;
-				$this->stepValue = Hash::get($controller->request->data, $this->sessionBaseKey . '.' . self::PREF);
-				unset($controller->request->data[$this->sessionBaseKey][self::PREF]);
-			} elseif (Hash::check($controller->request->data, $this->sessionBaseKey . '.' . self::NEXTSTEP)) {
-				$this->step = self::NEXTSTEP;
-				$this->stepValue = Hash::get($controller->request->data, $this->sessionBaseKey . '.' . self::NEXTSTEP);
-				unset($controller->request->data[$this->sessionBaseKey][self::NEXTSTEP]);
+			if (Hash::check($controller->request->data, $this->sessionBaseKey . '.' . static::PREF)) {
+				$this->step = static::PREF;
+				$this->stepValue = Hash::get($controller->request->data, $this->sessionBaseKey . '.' . static::PREF);
+				unset($controller->request->data[$this->sessionBaseKey][static::PREF]);
+			} elseif (Hash::check($controller->request->data, $this->sessionBaseKey . '.' . static::NEXT)) {
+				$this->step = static::NEXT;
+				$this->stepValue = Hash::get($controller->request->data, $this->sessionBaseKey . '.' . static::NEXT);
+				unset($controller->request->data[$this->sessionBaseKey][static::NEXT]);
 			}
 			if (count($controller->request->data[$this->sessionBaseKey]) === 0) {
 				unset($controller->request->data[$this->sessionBaseKey]);
@@ -622,6 +622,24 @@ class TransitionComponent extends Component {
 		}
 
 		return true;
+	}
+
+/**
+ * Check current step if `prev`
+ *
+ * @return bool
+ */
+	public function isPrevStep() {
+		return $this->step === static::PREF;
+	}
+
+/**
+ * Check current step if `nextstep`
+ *
+ * @return bool
+ */
+	public function isNextStep() {
+		return $this->step === static::NEXT;
 	}
 
 }
