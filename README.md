@@ -2,7 +2,10 @@
 
 ## Version ##
 
-This was versioned as 2.0 RC1.
+Origin version created by hiromi2424.
+Forked https://github.com/hiromi2424/TransitionComponent
+
+This was versioned as 2.2.0.
 
 ## Introduction ##
 
@@ -17,22 +20,22 @@ Transition component is a CakePHP component to help your transitional pages logi
 ## Requirements ##
 
 - CakePHP >= 2.0
-- PHP >= 5.2.6
+- PHP >= 5.2.8
 
 Recommended:
 
-- CakePHP >= 2.1
+- CakePHP >= 2.2
 - PHP >= 5.3.2
 
 ## Setup ##
 
 	cd /path/to/root/app/Plugin # or /path/to/root/plugins
-	git clone git://github.com/hiromi2424/TransitionComponent.git Transition
+	git clone git://github.com/zaininnari/TransitionComponent.git TransitionComponent
 
 Or:
 
 	cd /path/to/your_repository
-	git submodule add git://github.com/hiromi2424/TransitionComponent.git plugins/Transition
+	git submodule add git://github.com/zaininnari/TransitionComponent.git plugins/TransitionComponent
 
 ## Summary ##
 
