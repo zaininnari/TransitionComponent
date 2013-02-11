@@ -12,7 +12,11 @@ env:
   - CAKE_VERSION=2.2.7 DB=mysql
   - CAKE_VERSION=2.2.7 DB=pgsql
 
-
+matrix:
+  include:
+    - php: 5.4
+      env:
+        - PHPCS=1
 
 before_script:
   - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE cakephp_test;'; fi"
@@ -20,6 +24,9 @@ before_script:
   - git clone --depth 1 git://github.com/cakephp/cakephp ../cakephp && cd ../cakephp && git checkout $CAKE_VERSION
   - cp -R ../TransitionComponent plugins/TransitionComponent
   - chmod -R 777 ../cakephp/app/tmp
+  - pear channel-discover pear.cakephp.org
+  - pear install --alldeps cakephp/CakePHP_CodeSniffer
+  - phpenv rehash
   - set +H
   - echo "<?php
     class DATABASE_CONFIG {
@@ -75,4 +82,4 @@ before_script:
     }" > ../cakephp/app/Config/database.php
 
 script:
-  - ./lib/Cake/Console/cake test TransitionComponent Component/TransitionComponent --stderr
+  - sh -c "if [ '$PHPCS' != '1' ]; then ./lib/Cake/Console/cake test TransitionComponent Component/TransitionComponent --stderr; else phpcs -p --extensions=php --standard=CakePHP ./plugins/TransitionComponent; fi"
