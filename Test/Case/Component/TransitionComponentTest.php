@@ -17,9 +17,7 @@ class TransitionComponentTestController extends Controller {
     public $components = array('TransitionComponent.Transition');
     public $uses = array('TransitionModel');
 
-    public $redirectTo = null;
-
-    public function redirect($url) {
+    public function redirect($url, $status = null, $exit = true) {
         throw new RedirectException(Router::url($url));
     }
 }
@@ -36,7 +34,7 @@ class TransitionModelBase extends CakeTestModel {
     public $useTable = false;
     public $validationSuccess = true;
 
-    public function validates() {
+    public function validates($options = array()) {
         return $this->validationSuccess;
     }
 
@@ -83,7 +81,7 @@ class NormalValidation extends CakeTestModel {
 }
 
 class ObjectValidation {
-    public function validates() {
+    public function validates($options = array()) {
         return true;
     }
 }
@@ -105,7 +103,7 @@ class TransitionComponentTest extends CakeTestCase {
      * @var Controller Controller
      */
     public $Controller = null;
-    // public $fixtures = array('plugin.transition.transition_post');
+    public $fixtures = array('plugin.TransitionComponent.transition_post');
     public $sessionBaseKey = '';
 
     protected $_CRConfig;

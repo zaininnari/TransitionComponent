@@ -1,4 +1,5 @@
 # Transition Component #
+[![Build Status](https://travis-ci.org/zaininnari/TransitionComponent.png?branch=master)](https://travis-ci.org/zaininnari/TransitionComponent)
 
 ## Version ##
 
@@ -25,7 +26,9 @@ Transition component is a CakePHP component to help your transitional pages logi
 Recommended:
 
 - CakePHP >= 2.2
+ - CakePHP 2.3 support
 - PHP >= 5.3.2
+ - PHP 5.4 support
 
 ## Setup ##
 
