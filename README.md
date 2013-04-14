@@ -21,12 +21,13 @@ Transition component is a CakePHP component to help your transitional pages logi
 ## Requirements ##
 
 - CakePHP >= 2.0
-- PHP >= 5.2.8
+- PHP >= 5.3.2
+ - No support PHP 5.2
 
 Recommended:
 
 - CakePHP >= 2.2
- - CakePHP 2.3 support
+ - CakePHP 2.3.2 support
 - PHP >= 5.3.2
  - PHP 5.4 support
 
