@@ -255,7 +255,7 @@ class TransitionComponent extends Component {
 			'validationMethod' => $this->validationMethod,
 		);
 
-		extract($options = Set::merge($defaults, $options));
+		extract($options = Hash::merge($defaults, $options));
 
 		if ($prev !== null) {
 			$prevOption = array_merge($options, array('message' => $messages['prev']));
@@ -532,10 +532,10 @@ class TransitionComponent extends Component {
 /**
  * Get merged session data.
  *
- * @param string $callback Callback method to merging. valid callback type or Sring like "Set::merge" can be accepted.(optional)
+ * @param string $callback Callback method to merging. valid callback type or Sring like "Hash::merge" can be accepted.(optional)
  * @return mixed Merged session data or null
  */
-	public function mergedData($callback = 'Set::merge') {
+	public function mergedData($callback = 'Hash::merge') {
 		$allData = $this->allData();
 		if (empty($allData)) {
 			return $allData;
